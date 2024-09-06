@@ -1,0 +1,49 @@
+html, body {
+	position: relative;
+	width: 100%;
+	height: 100%;
+}
+
+body {
+	margin: auto;
+	background-size: 100%;
+	background-image: url('/images/shadowrun_bug_city_chicago_wallpaper_by_m3ch4z3r0_d51zqtb-pre.jpg');
+	background-repeat: no-repeat;
+
+	text-align: center;	
+}
+
+#botaoplay {
+	display: block;
+	position: absolute;
+	text-decoration: none;
+	font-size: 30px;
+	width: 25%;
+	top: 84.5%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	color: rgb(255, 255, 255); 
+}
+
+#botaoquit {
+	display: block;
+	position: absolute;
+	text-decoration: none;
+	font-size: 30px;
+	width: 25%;
+	top: 90%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	color: rgb(255, 255, 255); 
+}
+@keyframes identifier {
+	
+}
+
+#botaoplay:hover{
+	background-image: url('/images/Detalhe1.png');
+}
+
+#botaoquit:hover{
+	background-image: url('/images/Detalhe1.png');
+}
