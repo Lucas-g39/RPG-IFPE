@@ -1,0 +1,149 @@
+<script>
+    import "../../styles/Gameplay.css"
+    
+	let player = new Player();
+	let vilao = new Viloes(100, 10, 3);
+	let vilao2 = new Viloes(200, 16, 9);
+	let chefe = new Chefe();
+
+	let Estagio = 1; // 1 - Primeiro Vilão, 2 - Segundo Vilão, 3 - chefe
+	let Fimdejogo = false;
+	let Vitoria = '';
+
+	function ataque() {
+		if (Estagio === 1) {
+			player.ataque(vilao);
+			if (vilao.vv <= 0) {
+				player.atk += 3;
+				player.df += 4;
+				Estagio = 2;
+			}
+		} else if (Estagio === 2) {
+			player.ataque(vilao2);
+			if (vilao2.vv <= 0) {
+				player.atk += 5;
+				player.df += 2;
+				Estagio = 3;
+			}
+		} else if (Estagio === 3) {
+			player.ataque(chefe);
+			if (chefe.vb <= 0) {
+				Vitoria = 'Parabéns! Você derrotou um dos 5 líderes do grupo!';
+				Estagio = 4; // Fim do jogo
+			}
+		}
+		inimigoatk();
+	}
+
+	function cura() {
+		player.cura();
+		inimigoatk();
+	}
+
+	function inimigoatk() {
+		if (Estagio === 1) {
+			vilao.ataque(player);
+		} else if (Estagio === 2) {
+			vilao2.ataque(player);
+		} else if (Estagio === 3) {
+			chefe.ataque(player);
+		}
+		if (player.vh <= 0) {
+			Fimdejogo = true;
+		}
+	}
+
+	class Player {
+    constructor() {
+        this.vh = 100; // Vida
+        this.atk = 10; // Ataque
+        this.df = 2;   // Defesa
+        this.fcr = 3;  // Frascos de Cura
+        this.cr = 10;  // Valor de Cura por Frasco
+    }
+
+    cura() {
+        if (this.fcr > 0) {
+            this.vh += this.cr;
+            this.fcr -= 1;
+        }
+    }
+
+    ataque(viloes) {
+        const damage = Math.max(this.atk - viloes.df, 0);
+        viloes.vv -= damage;
+    }
+}
+
+class Viloes {
+
+    constructor(vv, atkv, dfv) {
+        this.vv = vv; // Vida
+        this.atkv = atkv; // Ataque
+        this.dfv = dfv; // Defesa
+    }
+
+    ataque(player) {
+        player.vh -= Math.max(this.atkv - player.df, 0);
+    }
+}
+
+class Chefe {
+ 
+    constructor() {
+        this.vb = 350; // Vida
+        this.atkb = 20; // Ataque
+        this.dfb = 15; // Defesa
+    }
+
+
+    ataque(player) {
+        player.vh -= Math.max(this.atkb - player.df, 0);
+    }
+}
+</script>
+
+<main>
+	{#if !Fimdejogo && Estagio <= 3}
+		<div>
+			<h2>player</h2>
+			<p>Vida: {player.vh}</p>
+			<p>Ataque: {player.atk}</p>
+			<p>Defesa: {player.df}</p>
+			<p>Frascos de Cura: {player.fcr}</p>
+			<button on:click={ataque}>Atacar</button>
+			<button on:click={cura} disabled={player.fcr <= 0}>Usar Frasco de Cura</button>
+		</div>
+
+		{#if Estagio === 1}
+			<div>
+				<h2>Vilão 1</h2>
+				<p>Vida: {vilao.vv}</p>
+			</div>
+		{/if}
+
+		{#if Estagio === 2}
+			<div>
+				<h2>Vilão 2</h2>
+				<p>Vida: {vilao2.vv}</p>
+			</div>
+		{/if}
+
+		{#if Estagio === 3}
+			<div>
+				<h2>chefe</h2>
+				<p>Vida: {chefe.vb}</p>
+			</div>
+		{/if}
+	{:else if Fimdejogo}
+		<div>
+			<h2>Game Over</h2>
+			<p>Você foi derrotado!</p>
+		</div>
+	{:else if Vitoria}
+		<div>
+			<h2>Vitória!</h2>
+			<p>{Vitoria}</p>
+		</div>
+	{/if}
+</main>

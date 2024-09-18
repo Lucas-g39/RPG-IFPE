@@ -1,0 +1,113 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url('/images/imagebk.png');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 900px;
+  width: 1300px;
+  background-color: #000000;
+  position: relative;
+}
+
+.inimigo-imagem {
+  width: 165px;  
+  height: auto;  
+  position: absolute;
+  top: 130px; 
+  right: 970px;
+}
+
+.player-imagem {
+  width: 400px;  
+  height: auto;
+  position: absolute;
+  bottom: 160px;
+  left: 810px;
+}
+
+.box {
+  width: 300px;
+  height: 100px;
+  background-color: rgb(255, 255, 255);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  font-size: 18px;
+  position: absolute;
+  bottom: 80px;
+  right: 140px;
+}
+
+.box2 {
+  width: 300px;
+  height: 40px;
+  background-color: rgb(255, 255, 255);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  font-size: 18px;
+  position: absolute;
+  top: 70px;
+  left: 115px;
+}
+
+.Butaoataque {
+  position: absolute;
+  bottom: 135px;
+  right: 300px;
+  font-size: 30px;
+  width: 200px;
+  height: 40px;
+}
+
+.Butaoremedio {
+  position: absolute;
+  bottom: 85px;
+  right: 300px;
+  font-size: 30px;
+  width: 200px;
+  height: 40px;
+}
+
+.heroi{
+  margin-top: -10px;
+  margin-left: 150px;
+}
+.vilao{
+  margin-top: -15px;
+  margin-left: -25px;
+}
+/*------------------------[Fase 2]---------------------------------*/
+.vilao2{
+  margin-top: -15px;
+  margin-left: -25px;
+}
+.inimigo2-imagem {
+  width: 375px;  
+  height: auto;  
+  position: absolute;
+  top: 130px; 
+  right: 850px;
+}
+/*------------------------[Boss]---------------------------------*/
+.Boss{
+  margin-top: 3px;
+  margin-left: -15px;
+}
+.Boss-imagem {
+  width: 375px;  
+  height: auto;  
+  position: absolute;
+  top: 130px; 
+  right: 850px;
+}

@@ -1,12 +1,27 @@
-body {
-	margin: auto;
-	background-size: 100%;
-	background-image: url('/images/shadowrun_bug_city_chicago_wallpaper_by_m3ch4z3r0_d51zqtb-pre.jpg');
-	background-repeat: no-repeat;
-	background-attachment: fixed;
-    text-align: center;	
+body, html{
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url('/images/imagebk.png');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }
 
+.container {
+    position: relative; /* Troquei para relative */
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: auto; /* Deixe o height ser automático */
+    max-height: 850px; /* Define o limite máximo de altura */
+    width: 900px;
+    background-color: #ffffff00;
+    overflow-y: auto; /* Altere para auto para rolar só quando necessário */
+}
 
 p{	
 	color: white;
@@ -17,7 +32,6 @@ h1 {
     color: rgb(255, 0, 0);
     font-weight: bold;
    	font-size: 50px;
-    font-family: verdana;
 }
 
 h2 {
@@ -26,7 +40,7 @@ h2 {
 }
 
 .introducao {
-
+	
 	width: 20%;
 	text-decoration: none;
 }
@@ -44,23 +58,17 @@ img.sobre {
 	color: rgb(255, 255, 255);
 }
 
+#botaovoltarmenu, #botaodialogo {
+    position: relative; /* Troque para relative */
+    font-size: 30px;
+    color: rgb(255, 255, 255); 
+    margin-top: 20px; /* Adiciona espaçamento */
+}
+
 #botaovoltarmenu {
-	display: block;
-	position: absolute;
-	font-size: 30px;
-	top: 95%;
-	left: 40%;
-	transform: translate(-50%, -50%);
-	color: rgb(255, 255, 255); 
+    margin-right: 10px; /* Adiciona espaço entre os botões */
 }
 
-#botaogameplay {
-	display: block;
-	position: absolute;
-	font-size: 30px;
-	top: 95%;
-	left: 60.5%;
-	transform: translate(-50%, -50%);
-	color: rgb(255, 255, 255); 
+#botaodialogo {
+    margin-left: 10px;
 }
-

@@ -1,8 +1,15 @@
-<script>
+<script lang="ts">
     import "../../styles/introducao.css"
+    import { onMount } from 'svelte';
+
+    onMount(() => {
+        document.body.style.display = 'none';
+        document.body.offsetHeight;
+        document.body.style.display = '';
+    });
 </script>
 
-<div style="overflow:scroll; width: 1000px; height:850px">
+<div class="container">
     <h1>WARNING!!</h1>
     <h2>SUAS ESCOLHAS TEM CONSEQUÊNCIAS!</h2>
     <img class="jogar" src="/images/imagem.png" alt="foto"/>
@@ -14,5 +21,5 @@
     </p>
 </div>
 
-<a class="introducao" id="botaovoltarmenu" href="/">Voltar</a>
-<a class="introducao" id="botaogameplay" href="/gameplay" >Pular</a>
+<a class="introducao" id="botaovoltarmenu" href="/">VOLTAR</a>
+<a class="introducao" id="botaodialogo" href="/Dialogo" >PULAR</a>
