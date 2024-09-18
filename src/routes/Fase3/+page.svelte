@@ -3,24 +3,24 @@
 
     let player = {
     hp: 100,
-    defesa: 2,
-    ataque: 10,
-    remedios: 3,
-    cura: 10
+    defesa: 8,
+    ataque: 18,
+    remedios: 5,
+    cura: 20
   };
 
-  let vilao2 = {
-    hp: 200,
-    defesa: 2,
-    ataque: 8
+  let boss = {
+    hp: 500,
+    defesa: 15,
+    ataque: 20
   };
 
   let turnoDoJogador = true;
 
   function atacar() {
     if (turnoDoJogador) {
-      let dano = player.ataque - vilao2.defesa;
-      vilao2.hp = Math.max(vilao2.hp - dano, 0);
+      let dano = player.ataque - boss.defesa;
+      boss.hp = Math.max(boss.hp - dano, 0);
       checarFimDeJogo();
       turnoDoJogador = false;
       setTimeout(turnoDoVilao, 500); 
@@ -41,7 +41,7 @@
 
   function turnoDoVilao() {
     if (!turnoDoJogador) {
-      let dano = vilao2.ataque - player.defesa;
+      let dano = boss.ataque - player.defesa;
       player.hp = Math.max(player.hp - dano, 0);
       checarFimDeJogo();
       turnoDoJogador = true;
@@ -54,21 +54,20 @@
       setTimeout(() => {
         window.location.href = '/Derrota';
       });
-    } else if (vilao2.hp <= 0) {
+    } else if (boss.hp <= 0) {
 
       turnoDoJogador = false;
       setTimeout(() => {
-        window.location.href = '/Dialogo3';
+        window.location.href = '/Fim';
       },);
     }
   }
-
   </script>
   
   <main class="container">
     <div class="box2">
-      <div class="vilao">
-      <h2 class="Vilao">HP: {vilao2.hp}/200</h2>
+      <div class="Boss">
+      <h2 class="Boss">HP: {boss.hp}/500</h2>
       </div>
     </div>
     
@@ -79,13 +78,13 @@
       </div>
     </div>
     
-    <button class="Butaoataque" on:click={atacar} disabled={!turnoDoJogador || player.hp <= 0 || vilao2.hp <= 0}>
+    <button class="Butaoataque" on:click={atacar} disabled={!turnoDoJogador || player.hp <= 0 || boss.hp <= 0}>
       ATACAR
     </button>
-    <button class="Butaoremedio" on:click={curar} disabled={!turnoDoJogador || player.hp <= 0 || vilao2.hp <= 0}>
+    <button class="Butaoremedio" on:click={curar} disabled={!turnoDoJogador || player.hp <= 0 || boss.hp <= 0}>
       CURA
     </button>
     
-    <img class="inimigo2-imagem" src="/images/inimigo2.png" alt="imagem"/>
+    <img class="Boss-imagem" src="/images/boss.png" alt="imagem"/>
     <img class="player-imagem" src="/images/player.png" alt="imagem"/>
   </main>

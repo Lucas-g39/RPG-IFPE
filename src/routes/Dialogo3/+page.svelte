@@ -18,7 +18,7 @@
         if (dialogoAtual < dialogos.length - 1) {
             dialogoAtual++;
         } else {
-            goto("/Fase2");
+            goto("/Fase3");
         }
     }
 </script>
